@@ -1,109 +1,156 @@
 ﻿#include "board.hpp"
 board::board()
 {
-	pieces->at(0).set_colour(true);
-	pieces->at(0).set_type(p_type::KING);
-	pieces->at(0).set_pos({ 5,1 });
-	pieces->at(0).set_image_for_sprite();
+	for(int i =0; i < 32; ++i)
+	{
+		auto* temp_ptr = new piece;
+		m_pieces.emplace_back(temp_ptr);
+	}
 
-	pieces->at(1).set_colour(false);
-	pieces->at(1).set_type(p_type::KING);
-	pieces->at(1).set_pos({ 5,8 });
-	pieces->at(1).set_image_for_sprite();
+	m_pieces[0]->set_colour(true);
+	m_pieces[0]->set_type(p_type::KING);
+	m_pieces[0]->set_pos({ 5,1 });
+	m_pieces[0]->set_image_for_sprite();
 
-	pieces->at(2).set_colour(true);
-	pieces->at(2).set_type(p_type::QUEEN);
-	pieces->at(2).set_pos({ 4,1 });
-	pieces->at(2).set_image_for_sprite();
+	m_pieces[1]->set_colour(false);
+	m_pieces[1]->set_type(p_type::KING);
+	m_pieces[1]->set_pos({ 5,8 });
+	m_pieces[1]->set_image_for_sprite();
 
-	pieces->at(3).set_colour(false);
-	pieces->at(3).set_type(p_type::QUEEN);
-	pieces->at(3).set_pos({ 4,8 });
-	pieces->at(3).set_image_for_sprite();
+	m_pieces[2]->set_colour(true);
+	m_pieces[2]->set_type(p_type::QUEEN);
+	m_pieces[2]->set_pos({ 4,1 });
+	m_pieces[2]->set_image_for_sprite();
 
-
-	pieces->at(4).set_colour(true);
-	pieces->at(4).set_type(p_type::BISHOP);
-	pieces->at(4).set_pos({ 3,1 });
-	pieces->at(4).set_image_for_sprite();
-
-	pieces->at(5).set_colour(true);
-	pieces->at(5).set_type(p_type::BISHOP);
-	pieces->at(5).set_pos({ 6,1 });
-	pieces->at(5).set_image_for_sprite();
-
-	pieces->at(6).set_colour(false);
-	pieces->at(6).set_type(p_type::BISHOP);
-	pieces->at(6).set_pos({ 3,8 });
-	pieces->at(6).set_image_for_sprite();
-
-	pieces->at(7).set_colour(false);
-	pieces->at(7).set_type(p_type::BISHOP);
-	pieces->at(7).set_pos({ 6,8 });
-	pieces->at(7).set_image_for_sprite();
+	m_pieces[3]->set_colour(false);
+	m_pieces[3]->set_type(p_type::QUEEN);
+	m_pieces[3]->set_pos({ 4,8 });
+	m_pieces[3]->set_image_for_sprite();
 
 
-	pieces->at(8).set_colour(true);
-	pieces->at(8).set_type(p_type::KNIGHT);
-	pieces->at(8).set_pos({ 2,1 });
-	pieces->at(8).set_image_for_sprite();
+	m_pieces[4]->set_colour(true);
+	m_pieces[4]->set_type(p_type::BISHOP);
+	m_pieces[4]->set_pos({ 3,1 });
+	m_pieces[4]->set_image_for_sprite();
 
-	pieces->at(9).set_colour(true);
-	pieces->at(9).set_type(p_type::KNIGHT);
-	pieces->at(9).set_pos({ 7,1 });
-	pieces->at(9).set_image_for_sprite();
+	m_pieces[5]->set_colour(true);
+	m_pieces[5]->set_type(p_type::BISHOP);
+	m_pieces[5]->set_pos({ 6,1 });
+	m_pieces[5]->set_image_for_sprite();
 
-	pieces->at(10).set_colour(false);
-	pieces->at(10).set_type(p_type::KNIGHT);
-	pieces->at(10).set_pos({ 2,8 });
-	pieces->at(10).set_image_for_sprite();
+	m_pieces[6]->set_colour(false);
+	m_pieces[6]->set_type(p_type::BISHOP);
+	m_pieces[6]->set_pos({ 3,8 });
+	m_pieces[6]->set_image_for_sprite();
 
-	pieces->at(11).set_colour(false);
-	pieces->at(11).set_type(p_type::KNIGHT);
-	pieces->at(11).set_pos({ 7,8 });
-	pieces->at(11).set_image_for_sprite();
+	m_pieces[7]->set_colour(false);
+	m_pieces[7]->set_type(p_type::BISHOP);
+	m_pieces[7]->set_pos({ 6,8 });
+	m_pieces[7]->set_image_for_sprite();
 
 
-	pieces->at(12).set_colour(true);
-	pieces->at(12).set_type(p_type::ROOK);
-	pieces->at(12).set_pos({ 1,1 });
-	pieces->at(12).set_image_for_sprite();
+	m_pieces[8]->set_colour(true);
+	m_pieces[8]->set_type(p_type::KNIGHT);
+	m_pieces[8]->set_pos({ 2,1 });
+	m_pieces[8]->set_image_for_sprite();
 
-	pieces->at(13).set_colour(true);
-	pieces->at(13).set_type(p_type::ROOK);
-	pieces->at(13).set_pos({ 8,1 });
-	pieces->at(13).set_image_for_sprite();
+	m_pieces[9]->set_colour(true);
+	m_pieces[9]->set_type(p_type::KNIGHT);
+	m_pieces[9]->set_pos({ 7,1 });
+	m_pieces[9]->set_image_for_sprite();
 
-	pieces->at(14).set_colour(false);
-	pieces->at(14).set_type(p_type::ROOK);
-	pieces->at(14).set_pos({ 1,8 });
-	pieces->at(14).set_image_for_sprite();
+	m_pieces[10]->set_colour(false);
+	m_pieces[10]->set_type(p_type::KNIGHT);
+	m_pieces[10]->set_pos({ 2,8 });
+	m_pieces[10]->set_image_for_sprite();
 
-	pieces->at(15).set_colour(false);
-	pieces->at(15).set_type(p_type::ROOK);
-	pieces->at(15).set_pos({ 8,8 });
-	pieces->at(15).set_image_for_sprite();
+	m_pieces[11]->set_colour(false);
+	m_pieces[11]->set_type(p_type::KNIGHT);
+	m_pieces[11]->set_pos({ 7,8 });
+	m_pieces[11]->set_image_for_sprite();
+
+
+	m_pieces[12]->set_colour(true);
+	m_pieces[12]->set_type(p_type::ROOK);
+	m_pieces[12]->set_pos({ 1,1 });
+	m_pieces[12]->set_image_for_sprite();
+
+	m_pieces[13]->set_colour(true);
+	m_pieces[13]->set_type(p_type::ROOK);
+	m_pieces[13]->set_pos({ 8,1 });
+	m_pieces[13]->set_image_for_sprite();
+
+	m_pieces[14]->set_colour(false);
+	m_pieces[14]->set_type(p_type::ROOK);
+	m_pieces[14]->set_pos({ 1,8 });
+	m_pieces[14]->set_image_for_sprite();
+
+	m_pieces[15]->set_colour(false);
+	m_pieces[15]->set_type(p_type::ROOK);
+	m_pieces[15]->set_pos({ 8,8 });
+	m_pieces[15]->set_image_for_sprite();
 
 	for (int j = 0; j < 2; ++j) {
 		for (int i = 0; i < 8; ++i) {
-			pieces->at(16+i +8*j).set_colour(j);
-			pieces->at(16 + i + 8 * j).set_pos({ (i + 1),(j == 1) ? 2:7 });
-			pieces->at(16 + i + 8 * j).set_type(p_type::PAWN);
-			pieces->at(16 + i + 8 * j).set_image_for_sprite();
+			m_pieces[16 + i + 8 * j]->set_colour(j);
+			m_pieces[16 + i + 8 * j]->set_type(p_type::PAWN);
+			m_pieces[16 + i + 8 * j]->set_pos({ (i + 1),(j == 1) ? 2 : 7 });			
+			m_pieces[16 + i + 8 * j]->set_image_for_sprite();
 		}
-	}
-
+	}	
 	m_board_texture.loadFromFile("assets/board.png");
+	m_board_sprite.setTexture(m_board_texture);
+
+	m_selected_square.setSize({ 120.0f,120.0f });
+	m_selected_square.setOutlineColor(sf::Color::Magenta);
+	m_selected_square.setFillColor(sf::Color::Transparent);
+	m_selected_square.setOutlineThickness(3);
+	m_selected_square.setPosition({125.0f,125.0f});
 }
 board::~board()
 {
-	delete pieces;
+	for(auto i : m_pieces)
+	{
+		delete i;
+	}
+	m_pieces.clear();
 }
 sf::Sprite board::get_p_sprite(const int& index)
 {
-	return pieces->at(index).get_sprite();
+	return m_pieces[index]->get_sprite();
 }
-sf::Texture board::get_board_texture()
+sf::Sprite board::get_board_texture()
 {
-	return m_board_texture;
+	return m_board_sprite;
+}
+void board::delete_piece(const int& index)
+{
+	delete m_pieces[index];
+	m_pieces.erase(m_pieces.begin() + index);
+}
+sf::RectangleShape board::get_selected_square() const
+{
+	return m_selected_square;
+}
+void board::update_selected_square(sf::Vector2<int> mouse_pos)
+{
+	sf::Vector2<float> ss_pos = m_selected_square.getPosition();
+	sf::Vector2f adj_m_pos(mouse_pos);
+	if(adj_m_pos.x > ss_pos.x && adj_m_pos.x < (ss_pos.x + 125.0f) && adj_m_pos.y > ss_pos.y && adj_m_pos.y < ss_pos.y +125.0f 
+		&& m_square_is_seleted)
+		//if user clicked on the square and the square is selected
+	{
+		m_square_is_seleted = false;
+	}
+	else
+	{
+		adj_m_pos.x = adj_m_pos.x - abs(static_cast<int>(adj_m_pos.x) % 125) + 2;
+		adj_m_pos.y = adj_m_pos.y - abs(static_cast<int>(adj_m_pos.y) % 125) + 2;
+		m_square_is_seleted = true;
+		m_selected_square.setPosition(adj_m_pos);
+	}
+}
+bool board::get_square_state()
+{
+	return m_square_is_seleted;
 }

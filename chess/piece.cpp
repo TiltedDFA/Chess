@@ -14,13 +14,49 @@ void piece::set_type(const p_type& type)
 {
 	m_piece_type = type;
 }
-sf::Vector2<int> piece::get_pos()
+sf::Vector2<float> piece::get_pos()
 {
-	return m_position;
+	return m_piece_image.getPosition();
 }
 void piece::set_pos(const sf::Vector2<int>& pos)
 {
-	m_position = pos;
+	sf::Vector2<float> adjusted_pos = { (static_cast<float>(pos.x)-1) * 125.0f
+		,(static_cast<float>(pos.y)-1) * 125.0f };
+	switch (m_piece_type)
+	{
+	case p_type::KING:
+		adjusted_pos.x += 10;
+		adjusted_pos.y += 7;
+		break;
+	case p_type::QUEEN:
+		adjusted_pos.x += 5;
+		adjusted_pos.y += 10;
+		break;
+	case p_type::BISHOP:
+		adjusted_pos.x += 10;
+		adjusted_pos.y += 10;
+		break;
+	case p_type::KNIGHT:
+		adjusted_pos.x += 10;
+		adjusted_pos.y += 10;
+		break;
+	case p_type::ROOK:
+		adjusted_pos.x += 15;
+		adjusted_pos.y += 15;
+		break;
+	case p_type::PAWN:
+		adjusted_pos.x += 20;
+		adjusted_pos.y += 20;
+		break;
+	}
+	m_piece_image.setPosition(adjusted_pos);	
+}
+void piece::update_pos(const sf::Vector2<int>& pos)
+{
+	m_piece_image.setPosition(
+		m_piece_image.getPosition().x - (static_cast<float>(pos.x)-1) * 125.0f
+		, m_piece_image.getPosition().y - (static_cast<float>(pos.y)-1) * 125.0f
+	);
 }
 bool piece::get_colour()
 {
@@ -64,4 +100,12 @@ void piece::set_image_for_sprite()
 			: m_piece_image.setTextureRect({ 695,158,74,95 });
 		break;
 	}
+}
+bool piece::get_move_state()
+{
+	return m_has_moved;
+}
+void piece::set_moved_true()
+{
+	m_has_moved = true;
 }

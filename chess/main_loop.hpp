@@ -1,6 +1,5 @@
 #pragma once
-#include "piece.hpp"
-
+#include "game.hpp"
 namespace Game
 {
 	void run();
