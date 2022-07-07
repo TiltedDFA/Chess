@@ -153,6 +153,9 @@
     <ClInclude Include="main_loop.hpp" />
     <ClInclude Include="piece.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ToDo.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

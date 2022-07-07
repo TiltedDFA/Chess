@@ -20,43 +20,12 @@ sf::Vector2<float> piece::get_pos()
 }
 void piece::set_pos(const sf::Vector2<int>& pos)
 {
-	sf::Vector2<float> adjusted_pos = { (static_cast<float>(pos.x)-1) * 125.0f
-		,(static_cast<float>(pos.y)-1) * 125.0f };
-	switch (m_piece_type)
-	{
-	case p_type::KING:
-		adjusted_pos.x += 10;
-		adjusted_pos.y += 7;
-		break;
-	case p_type::QUEEN:
-		adjusted_pos.x += 5;
-		adjusted_pos.y += 10;
-		break;
-	case p_type::BISHOP:
-		adjusted_pos.x += 10;
-		adjusted_pos.y += 10;
-		break;
-	case p_type::KNIGHT:
-		adjusted_pos.x += 10;
-		adjusted_pos.y += 10;
-		break;
-	case p_type::ROOK:
-		adjusted_pos.x += 15;
-		adjusted_pos.y += 15;
-		break;
-	case p_type::PAWN:
-		adjusted_pos.x += 20;
-		adjusted_pos.y += 20;
-		break;
-	}
+	const sf::Vector2<float> adjusted_pos = { static_cast<float>(pos.x),static_cast<float>(pos.y)};
 	m_piece_image.setPosition(adjusted_pos);	
 }
 void piece::update_pos(const sf::Vector2<int>& pos)
 {
-	m_piece_image.setPosition(
-		m_piece_image.getPosition().x - (static_cast<float>(pos.x)-1) * 125.0f
-		, m_piece_image.getPosition().y - (static_cast<float>(pos.y)-1) * 125.0f
-	);
+	m_piece_image.move(static_cast<float>(pos.x),static_cast<float>(pos.y));
 }
 bool piece::get_colour()
 {
@@ -76,28 +45,28 @@ void piece::set_image_for_sprite()
 	switch (m_piece_type)
 	{
 	case p_type::KING:
-		m_is_white ? m_piece_image.setTextureRect({15,17,105,105})
-			: m_piece_image.setTextureRect({ 14,148,105,105 });
+		m_is_white ? m_piece_image.setTextureRect({5,10,125,125})
+			: m_piece_image.setTextureRect({ 4,141,125,125 });
 		break;
 	case p_type::QUEEN:
-		m_is_white ? m_piece_image.setTextureRect({ 143,14,114,105 })
-			: m_piece_image.setTextureRect({143,149,114,107});
+		m_is_white ? m_piece_image.setTextureRect({ 138,4,125,125 })
+			: m_piece_image.setTextureRect({138,139,125,125 });
 		break;
 	case p_type::BISHOP:
-		m_is_white ? m_piece_image.setTextureRect({ 282,14,103,104 })
-			: m_piece_image.setTextureRect({ 282,147,103,104 });
+		m_is_white ? m_piece_image.setTextureRect({ 272,4,125,125 })
+			: m_piece_image.setTextureRect({ 272,137,125,125 });
 		break;
 	case p_type::KNIGHT:
-		m_is_white ? m_piece_image.setTextureRect({ 415,18,100,100 })
-			: m_piece_image.setTextureRect({ 415,152,100,100 });
+		m_is_white ? m_piece_image.setTextureRect({ 405,8,125,125 })
+			: m_piece_image.setTextureRect({ 405,142,125,125 });
 		break;
 	case p_type::ROOK:
-		m_is_white ? m_piece_image.setTextureRect({ 557,24,86,94 })
-			: m_piece_image.setTextureRect({ 557,158,86,94 });
+		m_is_white ? m_piece_image.setTextureRect({ 542,9,125,125 })
+			: m_piece_image.setTextureRect({ 542,143,125,125 });
 		break;
 	case p_type::PAWN:
-		m_is_white ? m_piece_image.setTextureRect({ 694,24,74,96 })
-			: m_piece_image.setTextureRect({ 695,158,74,95 });
+		m_is_white ? m_piece_image.setTextureRect({ 674,4,125,125 })
+			: m_piece_image.setTextureRect({ 675,138,125,125 });
 		break;
 	}
 }

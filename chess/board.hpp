@@ -13,7 +13,8 @@ public:
 	void delete_piece(const int& index);
 	sf::RectangleShape get_selected_square() const;
 	void update_selected_square(sf::Vector2<int> pos);
-	bool get_square_state();
+	bool get_square_state() const;
+	void flip_board()const ;
 private:
 	std::vector<piece*> m_pieces;
 	sf::Sprite m_board_sprite;

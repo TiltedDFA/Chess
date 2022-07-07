@@ -9,92 +9,92 @@ board::board()
 
 	m_pieces[0]->set_colour(true);
 	m_pieces[0]->set_type(p_type::KING);
-	m_pieces[0]->set_pos({ 5,1 });
+	m_pieces[0]->set_pos({ 500,0 });
 	m_pieces[0]->set_image_for_sprite();
 
 	m_pieces[1]->set_colour(false);
 	m_pieces[1]->set_type(p_type::KING);
-	m_pieces[1]->set_pos({ 5,8 });
+	m_pieces[1]->set_pos({ 500,875 });
 	m_pieces[1]->set_image_for_sprite();
 
 	m_pieces[2]->set_colour(true);
 	m_pieces[2]->set_type(p_type::QUEEN);
-	m_pieces[2]->set_pos({ 4,1 });
+	m_pieces[2]->set_pos({ 375,0 });
 	m_pieces[2]->set_image_for_sprite();
 
 	m_pieces[3]->set_colour(false);
 	m_pieces[3]->set_type(p_type::QUEEN);
-	m_pieces[3]->set_pos({ 4,8 });
+	m_pieces[3]->set_pos({ 375,875 });
 	m_pieces[3]->set_image_for_sprite();
 
 
 	m_pieces[4]->set_colour(true);
 	m_pieces[4]->set_type(p_type::BISHOP);
-	m_pieces[4]->set_pos({ 3,1 });
+	m_pieces[4]->set_pos({ 250,0 });
 	m_pieces[4]->set_image_for_sprite();
 
 	m_pieces[5]->set_colour(true);
 	m_pieces[5]->set_type(p_type::BISHOP);
-	m_pieces[5]->set_pos({ 6,1 });
+	m_pieces[5]->set_pos({ 625,0 });
 	m_pieces[5]->set_image_for_sprite();
 
 	m_pieces[6]->set_colour(false);
 	m_pieces[6]->set_type(p_type::BISHOP);
-	m_pieces[6]->set_pos({ 3,8 });
+	m_pieces[6]->set_pos({ 250,875 });
 	m_pieces[6]->set_image_for_sprite();
 
 	m_pieces[7]->set_colour(false);
 	m_pieces[7]->set_type(p_type::BISHOP);
-	m_pieces[7]->set_pos({ 6,8 });
+	m_pieces[7]->set_pos({ 625,875 });
 	m_pieces[7]->set_image_for_sprite();
 
 
 	m_pieces[8]->set_colour(true);
 	m_pieces[8]->set_type(p_type::KNIGHT);
-	m_pieces[8]->set_pos({ 2,1 });
+	m_pieces[8]->set_pos({ 125,0 });
 	m_pieces[8]->set_image_for_sprite();
 
 	m_pieces[9]->set_colour(true);
 	m_pieces[9]->set_type(p_type::KNIGHT);
-	m_pieces[9]->set_pos({ 7,1 });
+	m_pieces[9]->set_pos({ 750,0 });
 	m_pieces[9]->set_image_for_sprite();
 
 	m_pieces[10]->set_colour(false);
 	m_pieces[10]->set_type(p_type::KNIGHT);
-	m_pieces[10]->set_pos({ 2,8 });
+	m_pieces[10]->set_pos({ 125,875 });
 	m_pieces[10]->set_image_for_sprite();
 
 	m_pieces[11]->set_colour(false);
 	m_pieces[11]->set_type(p_type::KNIGHT);
-	m_pieces[11]->set_pos({ 7,8 });
+	m_pieces[11]->set_pos({ 750,875 });
 	m_pieces[11]->set_image_for_sprite();
 
 
 	m_pieces[12]->set_colour(true);
 	m_pieces[12]->set_type(p_type::ROOK);
-	m_pieces[12]->set_pos({ 1,1 });
+	m_pieces[12]->set_pos({ 0,0 });
 	m_pieces[12]->set_image_for_sprite();
 
 	m_pieces[13]->set_colour(true);
 	m_pieces[13]->set_type(p_type::ROOK);
-	m_pieces[13]->set_pos({ 8,1 });
+	m_pieces[13]->set_pos({ 875,0 });
 	m_pieces[13]->set_image_for_sprite();
 
 	m_pieces[14]->set_colour(false);
 	m_pieces[14]->set_type(p_type::ROOK);
-	m_pieces[14]->set_pos({ 1,8 });
+	m_pieces[14]->set_pos({ 0,875 });
 	m_pieces[14]->set_image_for_sprite();
 
 	m_pieces[15]->set_colour(false);
 	m_pieces[15]->set_type(p_type::ROOK);
-	m_pieces[15]->set_pos({ 8,8 });
+	m_pieces[15]->set_pos({ (875),875 });
 	m_pieces[15]->set_image_for_sprite();
 
 	for (int j = 0; j < 2; ++j) {
 		for (int i = 0; i < 8; ++i) {
 			m_pieces[16 + i + 8 * j]->set_colour(j);
 			m_pieces[16 + i + 8 * j]->set_type(p_type::PAWN);
-			m_pieces[16 + i + 8 * j]->set_pos({ (i + 1),(j == 1) ? 2 : 7 });			
+			m_pieces[16 + i + 8 * j]->set_pos({ (i * 125),(j == 1) ? 125 : 750 });
 			m_pieces[16 + i + 8 * j]->set_image_for_sprite();
 		}
 	}	
@@ -150,7 +150,17 @@ void board::update_selected_square(sf::Vector2<int> mouse_pos)
 		m_selected_square.setPosition(adj_m_pos);
 	}
 }
-bool board::get_square_state()
+bool board::get_square_state() const
 {
 	return m_square_is_seleted;
+}
+void board::flip_board() const 
+{
+	for(const auto& i : m_pieces)
+	{
+		const auto p_pos = i->get_pos();
+		sf::Vector2f new_position = {abs(p_pos.x- 875.0f),abs(p_pos.y - 875.0f)};//mirrors pos in x and y axis
+		sf::Vector2i converted(new_position);
+		i->set_pos(converted);
+	}
 }
