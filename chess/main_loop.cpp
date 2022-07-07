@@ -33,6 +33,8 @@ void Game::run()
                 if(event.mouseButton.button == sf::Mouse::Left)
                 {
                     c_board.update_selected_square(sf::Mouse::getPosition(window));
+                    _game.update_previously_selected_piece(c_board);
+                    _game.move_piece(c_board);
                     u_date_needed = true;
                     break;                   
                 }

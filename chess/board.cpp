@@ -9,22 +9,22 @@ board::board()
 
 	m_pieces[0]->set_colour(true);
 	m_pieces[0]->set_type(p_type::KING);
-	m_pieces[0]->set_pos({ 500,0 });
+	m_pieces[0]->set_pos({ 375,0 });
 	m_pieces[0]->set_image_for_sprite();
 
 	m_pieces[1]->set_colour(false);
 	m_pieces[1]->set_type(p_type::KING);
-	m_pieces[1]->set_pos({ 500,875 });
+	m_pieces[1]->set_pos({ 375,875 });
 	m_pieces[1]->set_image_for_sprite();
 
 	m_pieces[2]->set_colour(true);
 	m_pieces[2]->set_type(p_type::QUEEN);
-	m_pieces[2]->set_pos({ 375,0 });
+	m_pieces[2]->set_pos({ 500,0 });
 	m_pieces[2]->set_image_for_sprite();
 
 	m_pieces[3]->set_colour(false);
 	m_pieces[3]->set_type(p_type::QUEEN);
-	m_pieces[3]->set_pos({ 375,875 });
+	m_pieces[3]->set_pos({ 500,875 });
 	m_pieces[3]->set_image_for_sprite();
 
 
@@ -115,6 +115,14 @@ board::~board()
 	}
 	m_pieces.clear();
 }
+void board::set_p_position(const sf::Vector2<float>& pos, piece* p_piece)
+{
+	auto find_result = std::find(m_pieces.cbegin(), m_pieces.cend(), p_piece);
+	if (find_result == m_pieces.cend())
+		return;
+	//*find_result
+}
+
 sf::Sprite board::get_p_sprite(const int& index)
 {
 	return m_pieces[index]->get_sprite();
@@ -132,7 +140,7 @@ sf::RectangleShape board::get_selected_square() const
 {
 	return m_selected_square;
 }
-void board::update_selected_square(sf::Vector2<int> mouse_pos)
+void board::update_selected_square(const sf::Vector2<int>& mouse_pos)
 {
 	sf::Vector2<float> ss_pos = m_selected_square.getPosition();
 	sf::Vector2f adj_m_pos(mouse_pos);
@@ -163,4 +171,25 @@ void board::flip_board() const
 		sf::Vector2i converted(new_position);
 		i->set_pos(converted);
 	}
+}
+piece* board::find_piece_selected()const
+{
+	for(const auto& i : m_pieces)
+	{
+		if (i->get_pos().x <= m_selected_square.getPosition().x + 5.0f &&
+		    i->get_pos().x >= m_selected_square.getPosition().x - 5.0f &&
+		    i->get_pos().y <= m_selected_square.getPosition().y + 5.0f &&
+		    i->get_pos().y >= m_selected_square.getPosition().y - 5.0f)
+			return i;
+	}
+	return nullptr;
+}
+piece* board::find_piece_at_position(const sf::Vector2f& pos) const
+{
+	for (const auto& i : m_pieces)
+	{
+		if (i->get_pos() == pos)
+			return i;
+	}
+	return nullptr;
 }
