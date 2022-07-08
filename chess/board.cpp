@@ -102,7 +102,7 @@ board::board()
 	m_board_sprite.setTexture(m_board_texture);
 
 	m_selected_square.setSize({ 120.0f,120.0f });
-	m_selected_square.setOutlineColor(sf::Color::Magenta);
+	m_selected_square.setOutlineColor(sf::Color::Cyan);
 	m_selected_square.setFillColor(sf::Color::Transparent);
 	m_selected_square.setOutlineThickness(3);
 	m_selected_square.setPosition({125.0f,125.0f});
@@ -162,6 +162,10 @@ bool board::get_square_state() const
 {
 	return m_square_is_seleted;
 }
+void board::set_square_state(const bool& state)
+{
+	m_square_is_seleted = state;
+}
 void board::flip_board() const 
 {
 	for(const auto& i : m_pieces)
@@ -173,13 +177,13 @@ void board::flip_board() const
 	}
 }
 piece* board::find_piece_selected()const
-{
+{	
 	for(const auto& i : m_pieces)
 	{
-		if (i->get_pos().x <= m_selected_square.getPosition().x + 5.0f &&
-		    i->get_pos().x >= m_selected_square.getPosition().x - 5.0f &&
-		    i->get_pos().y <= m_selected_square.getPosition().y + 5.0f &&
-		    i->get_pos().y >= m_selected_square.getPosition().y - 5.0f)
+		if (i->get_pos().x >= m_selected_square.getPosition().x - 10.0f  &&
+		    i->get_pos().x <= m_selected_square.getPosition().x          &&
+		    i->get_pos().y >= m_selected_square.getPosition().y - 10.0f  &&
+		    i->get_pos().y <= m_selected_square.getPosition().y)
 			return i;
 	}
 	return nullptr;

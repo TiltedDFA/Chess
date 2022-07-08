@@ -14,6 +14,7 @@ public:
 	sf::RectangleShape get_selected_square() const;
 	void update_selected_square(const sf::Vector2<int>& pos);
 	bool get_square_state() const;
+	void set_square_state(const bool& state);
 	void flip_board()const;
 	piece* find_piece_selected()const;
 	piece* find_piece_at_position(const sf::Vector2f& pos) const;

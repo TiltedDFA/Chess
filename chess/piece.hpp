@@ -37,7 +37,6 @@ public:
 	void set_moved_true();
 private:
 	p_type m_piece_type;
-	sf::Vector2<int> m_position;
 	bool m_is_white;
 	bool m_has_moved = false;
 	sf::Sprite m_piece_image;
