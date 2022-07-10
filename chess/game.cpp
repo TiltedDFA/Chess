@@ -12,6 +12,8 @@ void game::display_all_pieces(board& c_board, sf::RenderWindow& window)
 	window.draw(c_board.get_board_texture());
 	for(int i = 0; i < 32;++i)
 	{
+		const auto temp = c_board.get_piece_at_index(i);
+		temp->update_sprite_pos();
 		window.draw(c_board.get_p_sprite(i));
 	}
 	if(c_board.get_square_state())
@@ -57,16 +59,19 @@ void game::update_previously_selected_piece(board& c_board)
 		m_previously_selected_piece = nullptr;
 	}
 }
-void game::move_piece(board& c_board,sf::Vector2i pos)const 
+void game::move_piece(board& c_board,sf::Vector2i mouse_pos)const 
 {
-	pos.x = pos.x - abs(static_cast<int>(pos.x) % 125) + 2;
-	pos.y = pos.y - abs(static_cast<int>(pos.y) % 125) + 2;
+	mouse_pos.x = mouse_pos.x - abs(static_cast<int>(mouse_pos.x) % 125);
+	mouse_pos.y = mouse_pos.y - abs(static_cast<int>(mouse_pos.y) % 125);//finds the co-ords of the box which the mouse is in
 
-	const sf::Vector2f pos_to_move_to = {static_cast<float>(pos.x), static_cast<float>(pos.y)} ;
-	const sf::Vector2i adjusted(pos_to_move_to);
+	mouse_pos.x = (mouse_pos.x / 125) + 1;
+	mouse_pos.y = (mouse_pos.y / 125) + 1;
+
+	//const sf::Vector2f pos_to_move_to = {static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)} ;
+	//const sf::Vector2i adjusted(pos_to_move_to);
 	if(c_board.get_square_state() && m_previously_selected_piece != nullptr)//if something has been selected
 	{
-		m_previously_selected_piece->set_pos(adjusted);
+		m_previously_selected_piece->set_piece_position(mouse_pos);
 		c_board.set_square_state(false);
 	}
 }

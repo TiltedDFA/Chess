@@ -3,10 +3,11 @@ piece::piece()
 {
 	m_piece_type = p_type::KING;
 	m_is_white = true;
-	m_full_image.loadFromFile(PIECE_FILE_NAME);		
+	m_full_image.loadFromFile(PIECE_FILE_NAME);
+	m_piece_pos = { 0,0 };
 }
 
-p_type piece::get_type()
+p_type piece::get_type()const
 {
 	return m_piece_type;
 }
@@ -14,20 +15,20 @@ void piece::set_type(const p_type& type)
 {
 	m_piece_type = type;
 }
-sf::Vector2<float> piece::get_pos()
+sf::Vector2<float> piece::get_sprite_pos()const
 {
 	return m_piece_image.getPosition();
 }
-void piece::set_pos(const sf::Vector2<int>& pos)
+void piece::set_sprite_pos(const sf::Vector2<int>& pos)
 {
 	const sf::Vector2<float> adjusted_pos = { static_cast<float>(pos.x),static_cast<float>(pos.y)};
 	m_piece_image.setPosition(adjusted_pos);	
 }
-void piece::update_pos(const sf::Vector2<int>& pos)
+void piece::update_sprite_pos(const sf::Vector2<int>& pos)
 {
 	m_piece_image.move(static_cast<float>(pos.x),static_cast<float>(pos.y));
 }
-bool piece::get_colour()
+bool piece::get_colour()const
 {
 	return m_is_white;
 }
@@ -77,4 +78,16 @@ bool piece::get_move_state()
 void piece::set_moved_true()
 {
 	m_has_moved = true;
+}
+sf::Vector2i piece::get_piece_position()const
+{
+	return m_piece_pos;
+}
+void piece::set_piece_position(const sf::Vector2i& pos)
+{
+	m_piece_pos = pos;
+}
+void piece::update_sprite_pos()
+{
+	m_piece_image.setPosition(static_cast<float>(m_piece_pos.x - 1) * 125.0f, static_cast<float>(m_piece_pos.y - 1) * 125.0f);
 }

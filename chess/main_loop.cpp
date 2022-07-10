@@ -21,12 +21,17 @@ void Game::run()
                 window.close();
                 break;
             case sf::Event::KeyPressed:
-                if (event.key.code == sf::Keyboard::Escape)
-                    window.close();
-                else if (event.key.code == sf::Keyboard::Space)
+                switch (event.key.code)
                 {
+                case sf::Keyboard::Escape:
+                    window.close();
+                    break;
+                case sf::Keyboard::Space:
                     c_board.flip_board();
-                    u_date_needed = true;
+                    u_date_needed = true;                    
+                    break;
+                default:
+                    break;
                 }
                 break;
             case sf::Event::MouseButtonPressed:
