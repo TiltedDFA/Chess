@@ -101,10 +101,10 @@ board::board()
 	m_board_texture.loadFromFile("assets/board.png");
 	m_board_sprite.setTexture(m_board_texture);
 
-	m_selected_square.setSize({ 120.0f,120.0f });
+	m_selected_square.setSize({ 125.0f,125.0f });
 	m_selected_square.setOutlineColor(sf::Color::Blue);
 	m_selected_square.setFillColor(sf::Color::Transparent);
-	m_selected_square.setOutlineThickness(3);
+	m_selected_square.setOutlineThickness(-3);
 	m_selected_square.setPosition({125.0f,125.0f});
 }
 board::~board()
