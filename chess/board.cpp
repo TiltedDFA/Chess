@@ -193,11 +193,11 @@ piece* board::find_piece_selected()const
 	}
 	return nullptr;
 }
-piece* board::find_piece_at_position(const sf::Vector2f& pos) const
+piece* board::find_piece_at_position(const sf::Vector2i& pos) const
 {
 	for (const auto& i : m_pieces)
 	{
-		if (i->get_sprite_pos() == pos)
+		if (i->get_piece_position() == pos)
 			return i;
 	}
 	return nullptr;

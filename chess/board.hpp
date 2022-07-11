@@ -18,7 +18,7 @@ public:
 	sf::Vector2i get_square_board_coordinates()const;
 	void flip_board()const;
 	piece* find_piece_selected()const;
-	piece* find_piece_at_position(const sf::Vector2f& pos) const;
+	piece* find_piece_at_position(const sf::Vector2i& pos) const;
 private:
 	std::vector<piece*> m_pieces;
 	sf::Sprite m_board_sprite;
