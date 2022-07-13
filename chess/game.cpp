@@ -133,6 +133,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -152,6 +159,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -175,6 +189,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -194,6 +215,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -219,6 +247,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -238,6 +273,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -261,6 +303,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -280,6 +329,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -305,6 +361,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if(c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -324,6 +387,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if(c_board.find_piece_at_position(temp) == nullptr ||
@@ -347,6 +417,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -366,6 +443,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -388,7 +472,14 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				)
 			{
 				break;
-			} 
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -408,6 +499,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -431,6 +529,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 			{
 				break;
 			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
+				break;
+			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
 				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour() &&
 				temp.x >= p_moves::min_bounds.x &&
@@ -450,6 +555,13 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				c_board.find_piece_at_position(temp)->get_colour() == m_piece->get_colour()
 				)
 			{
+				break;
+			}
+			if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
+				)
+			{
+				possible_moves.push_back({ piece_position, temp });
 				break;
 			}
 			else if (c_board.find_piece_at_position(temp) == nullptr ||
@@ -522,6 +634,7 @@ void game::move_piece(board& c_board,sf::Vector2i mouse_pos)const
 			if(c_board.find_piece_at_position(mouse_coords) == nullptr)
 			{
 				m_previously_selected_piece->set_piece_position(mouse_coords);
+				m_previously_selected_piece->set_moved_true();
 				c_board.set_square_state(false);
 			}
 			else
