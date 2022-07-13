@@ -37,12 +37,13 @@ public:
 	sf::Sprite get_sprite();
 	void set_image_for_sprite();
 
-	bool get_move_state();
+	bool get_move_state()const;
 	void set_moved_true();
 
 	sf::Vector2i get_piece_position()const;
 	void set_piece_position(const sf::Vector2i& pos);
 	void update_sprite_pos();
+
 private:
 	p_type m_piece_type;
 	sf::Sprite m_piece_image;

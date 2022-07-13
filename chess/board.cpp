@@ -115,8 +115,7 @@ board::~board()
 	}
 	m_pieces.clear();
 }
-
-sf::Sprite board::get_p_sprite(const int& index)const
+sf::Sprite board::get_piece_sprite(const int& index)const
 {
 	return m_pieces[index]->get_sprite();
 }
@@ -128,10 +127,17 @@ piece* board::get_piece_at_index(const int& index)const
 {
 	return m_pieces[index];
 }
-void board::delete_piece(const int& index)
+short int board::get_num_pieces_left()const
 {
-	delete m_pieces[index];
-	m_pieces.erase(m_pieces.begin() + index);
+	return m_pieces.size();
+}
+void board::delete_piece(const piece* m_piece)
+{
+	const auto piece_position = std::find(m_pieces.begin(), m_pieces.end(), m_piece);
+	if (piece_position == m_pieces.end())
+		return;
+	delete m_pieces[(piece_position - m_pieces.begin())];
+	m_pieces.erase(piece_position);
 }
 sf::RectangleShape board::get_selected_square() const
 {

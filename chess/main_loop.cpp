@@ -49,7 +49,12 @@ void Game::run()
             }
             if (u_date_needed)
             {
-                _game.display_all_pieces(c_board, window);
+                display::all_pieces(c_board, window);
+                if (_game.get_last_selected_piece() != nullptr)
+                {
+                    display::possible_moves(_game.generate_possible_moves(_game.get_last_selected_piece(),c_board),window);
+                }
+            
                 window.display();
                 u_date_needed = false;
             }

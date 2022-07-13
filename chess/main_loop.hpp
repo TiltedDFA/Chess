@@ -1,5 +1,5 @@
 #pragma once
-#include "game.hpp"
+#include "display.hpp"
 namespace Game
 {
 	void run();
