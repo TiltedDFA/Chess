@@ -30,6 +30,8 @@ private:
 	sf::Sprite m_board_sprite;
 	sf::Texture m_board_texture;
 
+	//bool m_
+
 	sf::RectangleShape m_selected_square;
 	bool m_square_is_seleted = false;
 };

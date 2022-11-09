@@ -78,18 +78,23 @@ std::vector<move> game::generate_possible_moves(const piece* m_piece, const boar
 				temp.y <= 8 &&
 				temp.x >= 1 &&
 				temp.y >= 1 &&
-				c_board.find_piece_at_position(temp) != nullptr &&
-				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()
-				)
+				c_board.find_piece_at_position(temp) == nullptr)
+				
 			{
 				possible_moves.push_back({{piece_position},{temp}});
+			}
+			else if (c_board.find_piece_at_position(temp) != nullptr &&
+				c_board.find_piece_at_position(temp)->get_colour() != m_piece->get_colour()) {
+				possible_moves.push_back({ {piece_position},{temp} });
 			}
 		}		
 		break;
 	case p_type::PAWN:
 		if(m_piece->get_move_state() == false &&
 			c_board.find_piece_at_position({piece_position.x,
-				(m_piece->get_colour() ? piece_position.y + 2 : piece_position.y - 2) }) == nullptr)
+				(m_piece->get_colour() ? piece_position.y + 2 : piece_position.y - 2) }) == nullptr &&
+			c_board.find_piece_at_position({ piece_position.x,
+				(m_piece->get_colour() ? piece_position.y + 1 : piece_position.y - 1)}) == nullptr)
 			//this checks whether the pawn can move two spaces
 		{
 			possible_moves.push_back({ piece_position,{piece_position.x,

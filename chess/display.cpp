@@ -18,7 +18,7 @@ void display::possible_moves(std::vector<move> p_moves, sf::RenderWindow& window
 		sf::Vector2f to_display = game::coordinates_to_pos(i.target_pos);
 		sf::RectangleShape square_to_display;
 		square_to_display.setPosition(to_display);
-		square_to_display.setFillColor(sf::Color::Red);
+		square_to_display.setFillColor(sf::Color(255, 0, 0, 128));
 		square_to_display.setSize({ 125.0f,125.0f });
 		window.draw(square_to_display);
 	}	
