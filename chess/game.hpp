@@ -46,11 +46,11 @@ public:
 	static [[nodiscard]] sf::Vector2f coordinates_to_pos(const sf::Vector2i& pos);
 	static bool is_move_legal(const p_type& piece_type, const sf::Vector2i& current_pos, const sf::Vector2i target_pos);
 	piece* get_last_selected_piece()const;
-	void take_piece(piece* taking_piece, piece* piece_to_take, board c_board)const;
+	void take_piece(piece* taking_piece, piece* piece_to_take, board& c_board);
 	std::vector<move> generate_possible_moves(const piece* m_piece,const board& c_board )const;
 	bool is_valid_move(piece* m_piece, const sf::Vector2i& position_to_move, board& c_board)const;
 	void update_previously_selected_piece(board& c_board);
-	void move_piece(board& c_board, sf::Vector2i mouse_pos)const;
+	void move_piece(board& c_board, sf::Vector2i mouse_pos);
 private:
 	bool m_is_white_true = true;
 	piece* m_previously_selected_piece = nullptr;

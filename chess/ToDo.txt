@@ -2,3 +2,5 @@
 -Make FEN position reader (Distant future)
 
 -currently running into issues when taking pieces and king's moves are not correctly displayed yet
+
+-The c_board destructor is being called after a piece is being deleted

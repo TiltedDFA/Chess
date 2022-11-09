@@ -3,6 +3,7 @@
 void Game::run()
 {
     sf::RenderWindow window(sf::VideoMode(1000, 1000), "Chess Engine By Tilted");   
+    window.setFramerateLimit(60);
     board c_board;
     game _game;
     bool u_date_needed = true;

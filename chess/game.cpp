@@ -57,7 +57,7 @@ piece* game::get_last_selected_piece()const
 {
 	return m_previously_selected_piece;
 }
-void game::take_piece(piece* taking_piece, piece* piece_to_take, board c_board)const
+void game::take_piece(piece* taking_piece, piece* piece_to_take, board& c_board)
 {
 	taking_piece->set_piece_position(piece_to_take->get_piece_position());
 	c_board.delete_piece(piece_to_take);	
@@ -617,7 +617,7 @@ void game::update_previously_selected_piece(board& c_board)
 		m_previously_selected_piece = nullptr;
 	}
 }
-void game::move_piece(board& c_board,sf::Vector2i mouse_pos)const 
+void game::move_piece(board& c_board,sf::Vector2i mouse_pos) 
 {
 	mouse_pos.x = mouse_pos.x - abs(static_cast<int>(mouse_pos.x) % 125);
 	mouse_pos.y = mouse_pos.y - abs(static_cast<int>(mouse_pos.y) % 125);//finds the co-ords of the box which the mouse is in
