@@ -1,6 +1,5 @@
 
 -Make FEN position reader (Distant future)
 
--currently running into issues when taking pieces and king's moves are not correctly displayed yet
+-need to be able to rotate board. This will involve updating how the possible move generation system works.
 
--The c_board destructor is being called after a piece is being deleted
